@@ -12,7 +12,7 @@ const JobSchema = new mongoose.Schema({
         ref: 'user'
     },
     skills: [{
-        type: string
+        type: String
     }],
     percentMatch: {
         type: Number

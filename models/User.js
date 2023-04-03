@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
         type: Boolean
     },
     skills: [{
-        type: string
+        type: String
     }],
     profile_ID_URL: {
         type: String
