@@ -185,6 +185,10 @@ app.post('/application', async (req, res) => {
     if(!jobID) return res.status(400).json({ msg: "Please include jobID for query" })
 
     try {
+        let application = await Application.findOne({ userID, jobID });
+
+        if (application) return res.status(401).json({ msg: "Application already exists" });
+
         let user = await User.findOne({ '_id': userID })
 
         if (!user) return res.status(404).json({ msg: "User not found" });
@@ -193,7 +197,7 @@ app.post('/application', async (req, res) => {
 
         if (!job) return res.status(404).json({ msg: "Job not found" });
 
-        let application = new Application({
+        application = new Application({
             userID,
             jobID
         });
